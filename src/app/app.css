@@ -1,27 +1,48 @@
 /* App component styles */
 .container {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
-.btn-cadastrar {
-  background-color: #007bff;
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-nav {
+  background-color: #6c757d;
   color: white;
   border: none;
   padding: 12px 24px;
   font-size: 16px;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  margin-bottom: 20px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  font-weight: 500;
 }
 
-.btn-cadastrar:hover {
+.btn-nav:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+}
+
+.btn-nav.active {
+  background-color: #007bff;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.btn-nav.active:hover {
   background-color: #0056b3;
 }
 
-.btn-cadastrar:focus {
+.btn-nav:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
@@ -30,4 +51,6 @@ h1 {
   text-align: center;
   color: #333;
   margin-bottom: 30px;
+  font-size: 2.5rem;
+  font-weight: bold;
 }

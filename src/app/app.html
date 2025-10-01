@@ -1,9 +1,24 @@
 <h1>{{ title() }}</h1>
 <div class="container">
-  <button class="btn-cadastrar" (click)="toggleCadastro()">
-    Cadastrar Conta a Pagar
-  </button>
+  <nav class="navigation">
+    <button 
+      class="btn-nav" 
+      [class.active]="mostrarLista()" 
+      (click)="toggleLista()">
+      📋 Listar Contas
+    </button>
+    <button 
+      class="btn-nav" 
+      [class.active]="mostrarCadastro()" 
+      (click)="toggleCadastro()">
+      ➕ Cadastrar Conta
+    </button>
+  </nav>
   
-  <app-cadastro-conta *ngIf="mostrarCadastro()"></app-cadastro-conta>
+  <app-lista-contas *ngIf="mostrarLista()"></app-lista-contas>
+  <app-cadastro-conta 
+    *ngIf="mostrarCadastro()" 
+    (contaCadastrada)="onContaCadastrada()">
+  </app-cadastro-conta>
 </div>
 <router-outlet></router-outlet>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
   imports: [ReactiveFormsModule, CommonModule]
 })
 export class CadastroContaComponent {
+  @Output() contaCadastrada = new EventEmitter<void>();
   form: FormGroup;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
@@ -37,6 +38,7 @@ export class CadastroContaComponent {
           next: (res) => {
             alert('Conta cadastrada com sucesso!');
             this.form.reset(); // Limpa o formulário após o cadastro
+            this.contaCadastrada.emit(); // Notifica o componente pai
           },
           error: (err) => {
             console.error('Erro ao cadastrar:', err);

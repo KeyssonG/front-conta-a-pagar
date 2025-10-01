@@ -1,0 +1,57 @@
+<div class="lista-container">
+  <div class="header">
+    <h2>Contas a Pagar</h2>
+    <button class="btn-atualizar" (click)="carregarContas()">
+      🔄 Atualizar Lista
+    </button>
+  </div>
+
+  <!-- Debug info -->
+
+  <ng-container *ngIf="carregando">
+    <div class="loading">
+      Carregando contas...
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="erro && !carregando">
+    <div class="erro">
+      {{ erro }}
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!carregando && !erro && contas && contas.length === 0">
+    <div class="sem-dados">
+      Nenhuma conta cadastrada.
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!carregando && !erro && contas && contas.length > 0">
+    <div class="tabela-container">
+    <table class="tabela-contas">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome da Conta</th>
+          <th>Valor Original</th>
+          <th>Valor Ajustado</th>
+          <th>Data Vencimento</th>
+          <th>Data Pagamento</th>
+          <th>Dias Entre Datas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let conta of contas" class="linha-conta">
+          <td>{{ conta.id }}</td>
+          <td>{{ conta.name }}</td>
+          <td class="valor">{{ formatarMoeda(conta.originationValue) }}</td>
+          <td class="valor">{{ formatarMoeda(conta.adjustedValue) }}</td>
+          <td>{{ formatarData(conta.dueDate) }}</td>
+          <td>{{ formatarData(conta.paymentDate) }}</td>
+          <td class="dias">{{ conta.daysBetween || '-' }} dias</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </ng-container>
+</div>
