@@ -1,0 +1,26 @@
+<div class="form-container">
+  <h2>Cadastrar Nova Conta</h2>
+  <form [formGroup]="form" (ngSubmit)="cadastrar()">
+    <div class="form-group">
+      <label>Nome da Conta:</label>
+      <input formControlName="name" placeholder="Ex: Conta de luz" />
+    </div>
+
+    <div class="form-group">
+      <label>Valor (R$):</label>
+      <input type="number" step="0.01" formControlName="originationValue" placeholder="0,00" />
+    </div>
+
+    <div class="form-group">
+      <label>Data de Vencimento:</label>
+      <input type="date" formControlName="dueDate" />
+    </div>
+
+    <div class="form-group">
+      <label>Data de Pagamento:</label>
+      <input type="date" formControlName="paymentDate" />
+    </div>
+
+    <button type="submit" class="btn-enviar">Cadastrar Conta</button>
+  </form>
+</div>
