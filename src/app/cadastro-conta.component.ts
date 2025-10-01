@@ -37,8 +37,8 @@ export class CadastroContaComponent {
         .subscribe({
           next: (res) => {
             alert('Conta cadastrada com sucesso!');
-            this.form.reset(); // Limpa o formulário após o cadastro
-            this.contaCadastrada.emit(); // Notifica o componente pai
+            this.form.reset(); 
+            this.contaCadastrada.emit(); 
           },
           error: (err) => {
             console.error('Erro ao cadastrar:', err);
